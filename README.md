@@ -10,9 +10,9 @@ Windows Desklet, Widget, Gadget, Rainmeter Skin that displays the current price 
 
 **To be able to use this Desklet first you will need to have the necessary requirements:**
 
-* **Rainmeter v4.3+** - for how to install check out: https://docs.rainmeter.net/manual/installing-rainmeter/
+* **Rainmeter v4.5+** - for how to install check out: https://docs.rainmeter.net/manual/installing-rainmeter/
 * **Windows 7/8/10** - rainmeter can be installed only on windows
-* **CoinMarketCap API Key** - you can create free tier account at https://pro.coinmarketcap.com/
+* **CoinMarketCap API Key** - you can create a free tier account at https://pro.coinmarketcap.com/
 
 *NOTE: Rainmeter is a completely safe, free and open-source application for Windows PCs. It is a platform that enables skins to run on your desktop. For more information check out: https://docs.rainmeter.net/manual/getting-started/*
     
@@ -55,7 +55,7 @@ Windows Desklet, Widget, Gadget, Rainmeter Skin that displays the current price 
     - Change the **`Currency`** to the desired **Currency** you want to see the price as e.g. **`Currency=USD`** (make sure it is in upper case). You can find all supported currencies on this page: https://coinmarketcap.com/api/documentation/v1/#section/Standards-and-Conventions
 5. Save the changes, now you can add your coin desklet from the `Manage` window, check the Usage section for more details
 
-*NOTE: This Dekslet comes with more than 420+ crypto-coins icons out of the box but in the case when the coin icon is not displayed for your coin that means you need to add the icon:*
+*NOTE: This Dekslet comes with more than 470+ crypto-coins icons out of the box but in the case when the coin icon is not displayed for your coin that means you need to add the icon:*
 
 - Download an icon for you crypto-coin and move it to **`C:\Users\#YourName#\Documents\Rainmeter\Skins\pbojan\@Resources\icons\`**
 - Make sure the icon is named the same as the **`CoinSymbol`** e.g. **`dash.png`**
@@ -103,7 +103,7 @@ ETH: 0x1125207ae7d169eb623fa228e5b2c48a6b6482d9
 ## MIT License
 
 ```
-Copyright (c) 2018-2020 Bojan Petkovski
+Copyright (c) 2018-2021 Bojan Petkovski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
