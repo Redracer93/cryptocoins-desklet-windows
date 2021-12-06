@@ -103,7 +103,7 @@ ETH: 0x1125207ae7d169eb623fa228e5b2c48a6b6482d9
 ## MIT License
 
 ```
-Copyright (c) 2018-2021 Bojan Petkovski
+Copyright (c) 2018-2022 Bojan Petkovski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

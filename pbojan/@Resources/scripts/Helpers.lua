@@ -34,6 +34,16 @@ function Round(num)
 	return string.format('%.' .. idp .. 'f', num)
 end
 
+function RoundWithPrecision(num, idp)
+	if num == '' then
+        return num
+    end
+    
+    num = tonumber(num)
+
+	return string.format('%.' .. idp .. 'f', num)
+end
+
 function RoundPercent(num)
     if num == '' then
         return num
@@ -67,7 +77,11 @@ end
 function OnRequestParsed()
 	local MeasureCoinLastUpdated = SKIN:GetMeasure('MeasureCoinLastUpdated')
 	local date = MeasureCoinLastUpdated:GetStringValue()
+	local coinSymbol = SKIN:GetMeasure('MeasureCoinSymbol'):GetStringValue()
 	
+	-- Set icon based on the symbol
+	SKIN:Bang('!SetOption', 'MeterIcon', 'ImageName', '#@#icons/' .. coinSymbol .. '.png')
+
 	-- Set formatted date
 	SKIN:Bang('!SetOption', 'MeasureCoinLastUpdatedFormatted', 'String', FormatDate(date))
 	
@@ -83,6 +97,30 @@ function OnRequestParsed()
 	
 	local MeasureCoinChange7D = SKIN:GetMeasure('MeasureCoinChange7D')
 	SKIN:Bang('!SetOption', 'MeasureCoinChange7DRounded', 'String', RoundPercent(MeasureCoinChange7D:GetStringValue()))
+
+	assetsOwned = tonumber(SKIN:GetVariable('AssetsOwned'))
+	assetsValue = tonumber(SKIN:GetVariable('AssetsValue'))
+
+	if assetsOwned then
+		currency = SKIN:GetVariable('Currency')
+
+		-- Set assets owned and total current value
+		SKIN:Bang('!SetOption', 'MeasureAssetsOwned', 'String', assetsOwned .. ' ' .. coinSymbol .. ' | ' .. currency .. ' ' .. Round(assetsOwned * tonumber(MeasureCoinPrice:GetStringValue())))
+		SKIN:Bang('!ShowMeter', 'MeterAssetsOwned')
+
+		-- If assets value is set also show profit percent
+		if assetsValue then
+			assetsProfit = assetsOwned * tonumber(MeasureCoinPrice:GetStringValue()) - assetsValue
+			assetsIncrease = (assetsProfit / assetsValue) * 100
+		
+			SKIN:Bang('!SetOption', 'MeasureAssetsIncrease', 'String', currency .. ' ' .. RoundWithPrecision(assetsProfit, 2) .. ' | ' .. RoundPercent(assetsIncrease) .. '%')
+			SKIN:Bang('!SetOption', 'MeterAssetsIncrease', 'FontColor', '5eb160')
+			if assetsProfit < 0 then
+				SKIN:Bang('!SetOption', 'MeterAssetsIncrease', 'FontColor', 'ff4b48')
+			end
+			SKIN:Bang('!ShowMeter', 'MeterAssetsIncrease')
+		end
+	end
 end
 
 function GetTimezoneDiff()
